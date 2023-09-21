@@ -1,0 +1,42 @@
+.form {
+  display: flex;
+  justify-content: center;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: 0.5rem;
+    input {
+      background-color: #ebecee;
+      border: none;
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      border-radius: 5px;
+      outline: none;
+      &::placeholder {
+        color: #000;
+        font-weight: bold;
+      }
+      &:focus {
+        border: 1px solid #000;
+      }
+    }
+  }
+}
+button {
+  display: flex;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 5px;
+  justify-content: center;
+  background-color: purple;
+  color: #fff;
+  width: 80%;
+  margin: 1rem auto 0 auto;
+  opacity: 1;
+  &:hover {
+    opacity: 0.8;
+  }
+}

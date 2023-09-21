@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './styles/components/_app.scss';
+
+import { BsHouse } from 'react-icons/bs';
+import { AiFillInfoCircle } from 'react-icons/ai';
+import Form from './components/Form';
+
+import ImageImc from '../public/IMC.jpg';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="app">
+      <div className="container-calculator">
+        <div className="container-data">
+          <div className="container-logo">
+            <div>
+              <BsHouse />
+              <h1>Calcule seu IMC</h1>
+            </div>
+            <AiFillInfoCircle />
+          </div>
+          <img src={ImageImc} alt="" />
+          <Form />
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="container-result">
+        <div>
+          <h2>Peso Normal</h2>
+        </div>
+        <div>
+          <p>Seu índice IMC é:</p>
+          {}
+          Peso ideal:
+          {}
+        </div>
+
+        <div></div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
