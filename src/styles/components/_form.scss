@@ -1,13 +1,12 @@
-.form {
-  display: flex;
-  justify-content: center;
+@use '../mixins';
 
+form {
   label {
     display: flex;
     flex-direction: column;
     font-size: 1.5rem;
     font-weight: bold;
-    margin-right: 0.5rem;
+
     input {
       background-color: #ebecee;
       border: none;
@@ -15,6 +14,7 @@
       padding: 0.5rem;
       border-radius: 5px;
       outline: none;
+      margin-bottom: 1rem;
       &::placeholder {
         color: #000;
         font-weight: bold;
@@ -24,7 +24,15 @@
       }
     }
   }
+  .form {
+    display: flex;
+    width: 100%;
+    label input {
+      width: 95%;
+    }
+  }
 }
+
 button {
   display: flex;
   padding: 0.6rem;
