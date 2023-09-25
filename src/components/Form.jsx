@@ -2,38 +2,38 @@ import Button from './Button.jsx';
 import '../styles/components/_form.scss';
 import { useState } from 'react';
 
-const Form = ({ user, valorIMC }) => {
-  const [name, setName] = useState('');
-  const [altura, setAltura] = useState('');
-  const [peso, setPeso] = useState('');
+const Form = ({ setUser, updateIMCValue }) => {
+  const [userName, setUserName] = useState('');
+  const [userHeight, setUserHeight] = useState('');
+  const [userWeight, setUserWeight] = useState('');
 
   const handleInputChange = (e) => {
     e.preventDefault();
 
-    const userData = { name, altura, peso };
+    const userData = { name: userName, altura: userHeight, peso: userWeight };
     calculatorIMC(userData.altura, userData.peso);
-    user(userData);
-    // resetInput();
+    setUser(userData);
+    resetInput();
   };
 
-  const formatAltura = (value) => {
+  const formatHeight = (value) => {
     value = value.replace(/[,\.]/g, '');
 
     if (value.length >= 2) {
       const formattedValue =
         value.substring(0, 1) + '.' + value.substring(1, 3);
-      setAltura(formattedValue);
+      setUserHeight(formattedValue);
     } else if (value.length === 1) {
-      setAltura(value + '.');
+      setUserHeight(value + '.');
     } else {
-      setAltura(value);
+      setUserHeight(value);
     }
   };
 
   const resetInput = () => {
-    setName('');
-    setAltura('');
-    setPeso('');
+    setUserName('');
+    setUserHeight('');
+    setUserWeight('');
   };
 
   const calculatorIMC = (a, p) => {
@@ -47,13 +47,13 @@ const Form = ({ user, valorIMC }) => {
     const resultData = { pesoMin, pesoMax, resultImc };
 
     if (resultImc < 18.5) {
-      valorIMC(resultData, 'Abaixo do normal');
-    } else if (resultData <= 24.9) {
-      valorIMC(resultData, 'Normal');
-    } else if (resultData <= 30) {
-      valorIMC(resultData, 'Sobrepeso');
+      updateIMCValue(resultData, 'Abaixo do normal');
+    } else if (resultImc <= 24.9) {
+      updateIMCValue(resultData, 'Normal');
+    } else if (resultImc <= 30) {
+      updateIMCValue(resultData, 'Sobrepeso');
     } else {
-      valorIMC(resultData, 'Obesidade');
+      updateIMCValue(resultData, 'Obesidade');
     }
   };
 
@@ -65,8 +65,8 @@ const Form = ({ user, valorIMC }) => {
           type="text"
           placeholder="ex: Alexandre"
           required
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
         />
       </label>
       <div className="form">
@@ -77,8 +77,8 @@ const Form = ({ user, valorIMC }) => {
             placeholder="M"
             required
             maxLength={4}
-            value={altura}
-            onChange={(e) => formatAltura(e.target.value)}
+            value={userHeight}
+            onChange={(e) => formatHeight(e.target.value)}
           />
         </label>
         <label>
@@ -88,8 +88,8 @@ const Form = ({ user, valorIMC }) => {
             placeholder="Kg"
             required
             maxLength={3}
-            value={peso}
-            onChange={(e) => setPeso(e.target.value)}
+            value={userWeight}
+            onChange={(e) => setUserWeight(e.target.value)}
           />
         </label>
       </div>

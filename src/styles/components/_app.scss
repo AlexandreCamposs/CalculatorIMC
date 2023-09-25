@@ -41,6 +41,9 @@
           h1 {
             margin-left: 1rem;
             font-size: 2rem;
+            @include mixins.mobile {
+              font-size: 1.5rem;
+            }
           }
         }
         @include mixins.mobile {
@@ -64,22 +67,22 @@
     padding-top: 3rem;
     text-align: center;
     @include mixins.mobile {
+      justify-content: space-around;
       border-radius: 15px 15px 0 0;
       width: 100%;
-      max-height: 50%;
-      height: 100%;
+      padding-top: inherit;
     }
     h2 {
       margin-top: 3rem;
       font-size: 3rem;
-      color: #fff;
+      color: variables.$white-color;
       font-weight: bold;
     }
     .data {
       p,
       span {
         margin: 1rem 0 0.5rem 0;
-        color: #fff;
+        color: variables.$white-color;
       }
       span {
         font-size: 2rem;
@@ -89,19 +92,14 @@
     .container-graus {
       margin: 1rem auto;
       margin-bottom: 10rem;
-      max-width: 80%;
-      width: 80%;
+      @include mixins.mobile {
+        margin-bottom: 4rem;
+      }
       .degrad {
         border-radius: 5px;
         display: flex;
         justify-content: space-around;
-        background: linear-gradient(
-          to left,
-          #b258f9 0,
-          #914ef9 25%,
-          #6446f9 50%,
-          #0040f8 70%
-        );
+        background: variables.$gradient-color;
       }
       .data-box {
         display: flex;
@@ -113,9 +111,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 0.5rem;
         flex: 1;
         height: 50px;
-        color: #fff;
+        color: variables.$white-color;
         border-radius: 50px !important;
       }
     }
